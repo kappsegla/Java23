@@ -19,6 +19,8 @@ public class Objects {
         Object anything = cylinder;
         System.out.println(((Cylinder) anything).getArea());
 
+        System.out.println(cylinder);
+
 
     }
 }
