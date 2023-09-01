@@ -9,7 +9,7 @@ public class Exercise6 {
         Random random = new Random();
         for (int i = 0; i < slumptal.length; i++) {
             int a = random.nextInt();
-            slumptal[i] = a;   
+            slumptal[i] = a;
         }
         for (int i = 0; i < slumpReversed.length; i++) {
             slumpReversed[i]=slumptal[9-i];
