@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Exercise8 {
     public static void main(String[] args) {
-        Integer[] array = {1, 2, 1, 3, 3, 4};
+        int[] array = {1, 2, 1, 3, 3, 4};
         int count = 0;
         for (int i = 0; i < array.length - 2; i += 2) {
             if (array[i] == array[i + 2] || array[i] == array[i + 3]
