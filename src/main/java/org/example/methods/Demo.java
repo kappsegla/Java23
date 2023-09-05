@@ -16,8 +16,10 @@ public class Demo {
 
         int sum = add(2, 3);
         System.out.println(sum);
-        String text = convertToString(1);
+        String text = convertToString(2);
         System.out.println(text);
+
+        String text2 = convertToString(add(1, add(1, 0)));
     }
 
     public static String convertToString(int number) {
