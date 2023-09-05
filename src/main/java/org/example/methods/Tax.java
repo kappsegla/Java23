@@ -29,12 +29,12 @@ public class Tax {
 
     public static void main(String[] args) {
         System.out.println(calculateTax(40000));
-        System.out.println(calculateTax(140000));
+        System.out.println(calculateTax(100001));
         System.out.println(calculateTaxVer2(40000));
         System.out.println(calculateTaxVer2(140000));
         System.out.println(calculateTaxVer3(40000));
         System.out.println(calculateTaxVer3(140000));
         System.out.println(calculateTaxVer4(40000));
-        System.out.println(calculateTaxVer4(140000));
+        System.out.println("Your tax for the year: " + calculateTaxVer4(140000) + " kr.");
     }
 }
