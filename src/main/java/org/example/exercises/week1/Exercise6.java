@@ -7,10 +7,10 @@ public class Exercise6 {
         int[] slumptal = new int[10];
         int[] slumpReversed = new int[10];
         Random random = new Random();
-        for (int i = 0; i < slumptal.length; i++) {
-            int a = random.nextInt();
-            slumptal[i] = a;
-        }
+
+        fillArrayWithRandomInts(slumptal, random);
+
+
         for (int i = 0; i < slumpReversed.length; i++) {
             slumpReversed[i]=slumptal[9-i];
         }
@@ -31,5 +31,12 @@ public class Exercise6 {
         System.out.println("\n" + "Summan av slumptal: " + summan);
 
 
+    }
+
+    private static void fillArrayWithRandomInts(int[] slumptal, Random random) {
+        for (int i = 0; i < slumptal.length; i++) {
+            int a = random.nextInt();
+            slumptal[i] = a;
+        }
     }
 }
