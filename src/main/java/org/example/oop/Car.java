@@ -9,6 +9,19 @@ public class Car {
     private Color color;
     private boolean started;
 
+    public Car(){
+        //Constructor, default, no param constructor
+        //Used for initialization of fields
+        model = "";
+        color = Color.BLACK;
+    }
+
+    public Car(String model){
+        this();
+        this.model = model;
+    }
+
+
     public void setStarted(boolean started){
         this.started = started;
     }
