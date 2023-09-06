@@ -2,8 +2,13 @@ package org.example.oop;
 
 public class Students {
     public static void main(String[] args) {
-
         Person person = new Person("Kalle",24);
+        //Person copyOfKalle = new Person(person.getName(), person.getAge());
+        Person copyOfKalle = new Person(person);
+
+        System.out.println(person.getName());
+        System.out.println(copyOfKalle.getName());
+
 
         Person[] persons = {
           new Person("Anna", 32),

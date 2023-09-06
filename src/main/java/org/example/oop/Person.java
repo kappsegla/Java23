@@ -13,6 +13,12 @@ public class Person {
         this.age = age;
     }
 
+    public Person(Person person){
+        this.name = person.name;
+        this.age = person.age;
+    }
+
+
     //No setName method. Name can only be set when creating a new Person
     //Name field is immutable in Person objects.
 
