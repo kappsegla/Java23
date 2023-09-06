@@ -14,7 +14,7 @@ public class Students {
         for(var p: persons)
             System.out.println(p.getName());
 
+        person.increaseAgeByOneYear();
 
     }
-
 }
