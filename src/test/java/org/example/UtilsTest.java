@@ -1,12 +1,16 @@
 package org.example;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
-import java.time.*;
+import java.time.Clock;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UtilsTest {
@@ -17,7 +21,7 @@ class UtilsTest {
         //act
         int actual = Utils.sum(2, 2);
         //assert
-        assertEquals(4, actual);
+        assertEquals(4, actual,"Sum of 2 + 2 should be 4");
     }
 
     @RepeatedTest(10)
@@ -31,6 +35,16 @@ class UtilsTest {
             throw new RuntimeException(e);
         }
         assertEquals(LocalDateTime.now(fixedClock).format(DateTimeFormatter.ISO_LOCAL_DATE), utils.currentDate());
+    }
+
+    @Test
+    @DisplayName("🎈 Retrieves a list of names including Kalle and starting with Martin")
+    void listOfNamesShouldContainKalle() {
+        assertThat(Utils.listOfNames())
+                .as("Should be [Martin, Kalle]")
+                .contains("Kalle")
+                .startsWith("Martin")
+                .doesNotContain("Anna");
     }
 
 }

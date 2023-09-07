@@ -4,6 +4,7 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class Utils {
 
@@ -25,6 +26,10 @@ public class Utils {
 
     public static int sum(int a, int b) {
         return a + b;
+    }
+
+    public static List<String> listOfNames(){
+        return List.of("Martin","Kalle");
     }
 
 
