@@ -10,6 +10,10 @@ public class Cylinder extends Circle {
         this.height = height;
     }
 
+    public float getHeight() {
+        return height;
+    }
+
     @Override
     public float getArea() {
         float circleArea = super.getArea();
