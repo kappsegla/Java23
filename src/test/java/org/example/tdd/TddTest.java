@@ -1,9 +1,11 @@
 package org.example.tdd;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import static org.example.tdd.Tdd.add;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TddTest {
 
@@ -22,6 +24,13 @@ public class TddTest {
     @Test
     void givenStringWithTwoNumbersThenReturnSum() {
         assertEquals(3, add("1,2"));
+    }
+
+    @Test
+    void givenStringWithNegativeSignThrowException() {
+        var test = RuntimeException.class;
+        
+        assertThrows(RuntimeException.class, () -> add("-1"));
     }
 
 }
