@@ -38,8 +38,7 @@ public class Demo {
                 .filter(s -> s.startsWith("b"))
                 .toList();
 
-        result.add("");
-
+//        result.add("");
     }
 
     public static void printInformation(Function<Integer, String> function) {
