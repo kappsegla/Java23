@@ -2,6 +2,8 @@ package org.example.functional;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Countries {
 
@@ -10,8 +12,28 @@ public class Countries {
         //printCountryNamesSorted();
         //printCountryNamesSortedByPopulationReversed();
        //printLargestPopulation();
-        printCountriesWithMoreLettersInNameThanCapital();
+//        printCountriesWithMoreLettersInNameThanCapital();
+//        List<Country> countries = fiveSmallestPopulations();
+//        countries.forEach(System.out::println);
+
+        collectNumberOfCountriesStartingWithSameLetter();
     }
+
+    public static Map<String, Long> collectNumberOfCountriesStartingWithSameLetter() {
+        var map = getCountries().stream()
+                .collect(Collectors.groupingBy(country -> country.countryName().substring(0,1), Collectors.counting()));
+        System.out.println(map);
+        return map;
+    }
+
+    public static List<Country> fiveSmallestPopulations() {
+        return getCountries().stream()
+                .sorted(Comparator.comparingDouble(Country::population))
+                .limit(5)
+                .toList();
+    }
+
+
 
     public static void printCountriesWithMoreLettersInNameThanCapital() {
         getCountries().stream()
