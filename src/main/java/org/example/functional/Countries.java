@@ -3,6 +3,9 @@ package org.example.functional;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Countries {
@@ -19,11 +22,27 @@ public class Countries {
         collectNumberOfCountriesStartingWithSameLetter();
     }
 
-    public static Map<String, Long> collectNumberOfCountriesStartingWithSameLetter() {
+    public static void collectNumberOfCountriesStartingWithSameLetter() {
         var map = getCountries().stream()
-                .collect(Collectors.groupingBy(country -> country.countryName().substring(0,1), Collectors.counting()));
+                .map(Country::countryName)
+                .map(Countries::toOptional)
+                .filter(Predicate.not(Optional::isEmpty))
+                .map(Optional::get)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println(map);
-        return map;
+    }
+
+    private static Optional<String> toOptional(String name) {
+//        if(name == null)
+//            return Optional.empty();
+//        if( name.isEmpty())
+//            return Optional.empty();
+        try {
+            return Optional.of(name.substring(0, 1));
+        }
+        catch (Exception e) {
+            return Optional.empty();
+        }
     }
 
     public static List<Country> fiveSmallestPopulations() {
@@ -93,7 +112,8 @@ public class Countries {
                 new Country("Italien", "Rom", 60.59, 301338),
                 new Country("Grekland", "Aten", 11.18, 131957),
                 new Country("Luxemburg", "Luxemburg", 0.58, 2586),
-                new Country("Liechtenstein", "Vaduz", 0.038, 160));
+                new Country("Liechtenstein", "Vaduz", 0.038, 160),
+                new Country("","The Place",1,10));
     }
 
     private static boolean nameLongerThanCapital(Country country) {
