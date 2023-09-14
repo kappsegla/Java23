@@ -1,12 +1,35 @@
 package org.example.functional;
 
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 public class Countries {
 
     public static void main(String[] args) {
-        firstAndLast();
+        //firstAndLast();
+        //printCountryNamesSorted();
+        //printCountryNamesSortedByPopulationReversed();
+        printLargestPopulation();
+    }
+
+    public static void printLargestPopulation() {
+        System.out.println(getCountries().stream()
+                .mapToDouble(Country::population)
+                .max().orElse(0.0));
+    }
+
+    public static void printCountryNamesSorted() {
+        getCountries().stream()
+                .map(Country::countryName)
+                .sorted()
+                .forEach(System.out::println);
+    }
+
+    public static void printCountryNamesSortedByPopulationReversed(){
+        getCountries().stream()
+                .sorted(Comparator.comparingDouble(Country::population).reversed())
+                .map(Country::countryName)
+                .forEach(System.out::println);
     }
 
     public static void firstAndLast() {
@@ -18,6 +41,8 @@ public class Countries {
         System.out.println(getCountries().stream().skip(getCountries().size() - 1).findAny().orElse(new Country("", "", 0, 0)).countryName());
 
     }
+
+
 
 
     public static List<Country> getCountries() {
