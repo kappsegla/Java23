@@ -9,7 +9,14 @@ public class Countries {
         //firstAndLast();
         //printCountryNamesSorted();
         //printCountryNamesSortedByPopulationReversed();
-        printLargestPopulation();
+       //printLargestPopulation();
+        printCountriesWithMoreLettersInNameThanCapital();
+    }
+
+    public static void printCountriesWithMoreLettersInNameThanCapital() {
+        getCountries().stream()
+                .filter(Countries::nameLongerThanCapital)
+                .forEach(System.out::println);
     }
 
     public static void printLargestPopulation() {
@@ -65,5 +72,9 @@ public class Countries {
                 new Country("Grekland", "Aten", 11.18, 131957),
                 new Country("Luxemburg", "Luxemburg", 0.58, 2586),
                 new Country("Liechtenstein", "Vaduz", 0.038, 160));
+    }
+
+    private static boolean nameLongerThanCapital(Country country) {
+        return country.countryName().length() > country.capital().length();
     }
 }
