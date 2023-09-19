@@ -1,5 +1,7 @@
 package org.example.badoop;
 
+import java.util.ArrayList;
+
 public class Demo {
     public static void main(String[] args) {
 
@@ -9,6 +11,7 @@ public class Demo {
 
         Shape shape1 = new Rectangle(10,1);
         System.out.println(shape1);
-        System.out.println(shape1.getWidth());
+        System.out.println(shape1.getWidth();
+
     }
 }

@@ -9,5 +9,3 @@ import java.util.Objects;
 //Can't use extends on record
 //Can implement interfaces
 public record Drink(String name, int energy) {}
-
-record DrinkWithSize(String name, int energy, int size){}
