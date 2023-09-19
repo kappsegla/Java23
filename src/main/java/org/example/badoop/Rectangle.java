@@ -1,8 +1,9 @@
 package org.example.badoop;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Rectangle extends Shape{
+public class Rectangle implements Shape {
     private int width;
     private int height;
 
@@ -11,10 +12,12 @@ public class Rectangle extends Shape{
         this.height = height;
     }
 
+    @Override
     public int getWidth() {
         return width;
     }
 
+    @Override
     public int getHeight() {
         return height;
     }

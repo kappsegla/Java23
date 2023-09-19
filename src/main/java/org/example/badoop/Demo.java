@@ -3,10 +3,12 @@ package org.example.badoop;
 public class Demo {
     public static void main(String[] args) {
 
-        Square shape = new Square(1);
+        Shape shape = new Square(1);
         System.out.println(shape);
+        System.out.println(shape.getWidth());
 
-        shape.setHeight(10);
-        System.out.println(shape);
+        Shape shape1 = new Rectangle(10,1);
+        System.out.println(shape1);
+        System.out.println(shape1.getWidth());
     }
 }

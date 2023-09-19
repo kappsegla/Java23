@@ -1,4 +1,9 @@
 package org.example.badoop;
 
-public class Shape {
+public interface Shape {
+
+    int getWidth();
+
+    int getHeight();
+
 }

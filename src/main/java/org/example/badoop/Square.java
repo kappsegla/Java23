@@ -3,11 +3,21 @@ package org.example.badoop;
 import java.util.Objects;
 
 //Square is not a subtype to Rectangle!!!
-public class Square extends Shape{
+public class Square implements Shape{
 
     private int size;
     public Square(int size){
         this.size = size;
+    }
+
+    @Override
+    public int getWidth() {
+        return size;
+    }
+
+    @Override
+    public int getHeight() {
+        return size;
     }
 
     public void setWidth(int width) {
