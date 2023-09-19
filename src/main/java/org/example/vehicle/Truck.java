@@ -1,4 +1,4 @@
-package org.example.vehilces;
+package org.example.vehicle;
 
 public final class Truck extends Vehicle {
     public Truck(String registrationNumber) {

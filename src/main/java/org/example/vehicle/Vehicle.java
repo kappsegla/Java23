@@ -1,4 +1,4 @@
-package org.example.vehilces;
+package org.example.vehicle;
 
 import java.util.Objects;
 

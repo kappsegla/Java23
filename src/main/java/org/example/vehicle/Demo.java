@@ -1,4 +1,4 @@
-package org.example.vehilces;
+package org.example.vehicle;
 
 public class Demo {
     public static void main(String[] args) {

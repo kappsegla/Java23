@@ -1,4 +1,4 @@
-package org.example.vehilces;
+package org.example.vehicle;
 
 public final class Car extends Vehicle {
 
