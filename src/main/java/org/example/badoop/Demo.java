@@ -11,7 +11,7 @@ public class Demo {
 
         Shape shape1 = new Rectangle(10,1);
         System.out.println(shape1);
-        System.out.println(shape1.getWidth();
+        System.out.println(shape1.getWidth());
 
     }
 }
