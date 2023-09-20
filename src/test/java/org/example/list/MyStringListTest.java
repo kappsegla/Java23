@@ -88,4 +88,50 @@ class MyStringListTest {
         myStringList.add("Test");
         assertThrows(IndexOutOfBoundsException.class, ()-> myStringList.get(1) );
     }
+
+    @Test
+    @DisplayName("remove index decreases size and returns removed String")
+    void removeIndexDecreasesSizeAndReturnsRemovedString() {
+        myStringList.add("Test1");
+        myStringList.add("Test2");
+        myStringList.add("Test3");
+        assertThat(myStringList.remove(0)).isEqualTo("Test1");
+        assertThat(myStringList.size()).isEqualTo(2);
+        assertThat(myStringList.get(0)).isEqualTo("Test2");
+    }
+
+    @Test
+    @DisplayName("remove index from list with full array")
+    void removeIndexFromListWithFullArray() {
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.remove(7);
+        assertThat(myStringList.size()).isEqualTo(9);
+    }
+
+    @Test
+    @DisplayName("remove last index")
+    void removeLastIndex() {
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+        myStringList.add("Test");
+
+        myStringList.remove(9);
+        assertThat(myStringList.size()).isEqualTo(9);
+    }
 }

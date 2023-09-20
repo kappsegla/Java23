@@ -73,9 +73,7 @@ public class MyStringList implements List<String> {
     }
 
     public String get(int index) {
-
-        if( index < 0 || index >= size())
-            throw new IndexOutOfBoundsException();
+        checkIndex(index);
         return values[index];
     }
 
@@ -88,7 +86,14 @@ public class MyStringList implements List<String> {
     }
 
     public String remove(int index) {
-        return null;
+        checkIndex(index);
+        String temp = values[index];
+        for (int i = index; i < size - 1; i++) {
+            values[i] = values[i + 1];
+        }
+        values[size-1] = null;
+        size--;
+        return temp;
     }
 
     public int indexOf(Object o) {
@@ -109,5 +114,10 @@ public class MyStringList implements List<String> {
 
     public List<String> subList(int fromIndex, int toIndex) {
         return null;
+    }
+
+    private void checkIndex(int index) {
+        if(index < 0 || index >= size())
+            throw new IndexOutOfBoundsException();
     }
 }
