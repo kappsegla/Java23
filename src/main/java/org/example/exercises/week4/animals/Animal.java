@@ -59,35 +59,3 @@ public abstract class Animal implements Comparable<Animal>{
         System.out.println(Arrays.toString(animals));
     }
 }
-
-class Cat extends Animal {
-    public Cat(int size) {
-        super(size,"Cat");
-    }
-
-    @Override
-    public String toString() {
-        return "Cat{" +
-               "name='" + "Cat" + '\'' +
-               ", size=" + this.getSize() +
-               '}';
-    }
-
-
-
-}
-
-class Dog extends Animal {
-    public Dog(int size) {
-        super(size,"Dog");
-    }
-
-    @Override
-    public String toString() {
-        return "Dog{" +
-               "name='" + "Dog" + '\'' +
-               ", size=" + this.getSize() +
-               '}';
-    }
-
-}
