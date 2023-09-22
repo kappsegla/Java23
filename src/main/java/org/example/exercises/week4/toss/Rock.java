@@ -5,4 +5,5 @@ public class Rock implements Tossable {
     public void toss() {
         System.out.println("A rock skips on the water surface");
     }
+
 }
