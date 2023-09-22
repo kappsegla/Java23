@@ -1,4 +1,4 @@
-package org.example.exercises.week4;
+package org.example.exercises.week4.toss;
 
 public class Football extends Ball {
     public Football(String brandName) {

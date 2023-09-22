@@ -1,6 +1,4 @@
-package org.example.exercises.week4;
-
-import java.io.Serializable;
+package org.example.exercises.week4.toss;
 
 public class Exercise1 {
 

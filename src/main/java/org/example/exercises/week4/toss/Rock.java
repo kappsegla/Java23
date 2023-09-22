@@ -1,4 +1,4 @@
-package org.example.exercises.week4;
+package org.example.exercises.week4.toss;
 
 public class Rock implements Tossable {
     @Override
