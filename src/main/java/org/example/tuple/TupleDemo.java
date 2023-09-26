@@ -2,6 +2,7 @@ package org.example.tuple;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class TupleDemo {
 
@@ -18,8 +19,9 @@ public class TupleDemo {
     }
 
     public List<String> test4() {
-        return List.of("Hej", "Hello");
+        return List.of();
     }
+
 
     public Pair<String, String> test5() {
         return Pair.of("Hej", "Hallå");
@@ -33,12 +35,23 @@ public class TupleDemo {
         return Pair.of("Hej", 0.1);
     }
 
+    public Optional<Car> getCarByType(String type) {
+        if (type.equals("SUV"))
+            return Optional.of(new Car("SUV"));
+        else
+            return Optional.empty();
+    }
+
 
     public static void main(String[] args) {
         var pair = new TupleDemo().test6();
         System.out.println(pair);
 
-
+        var car = new TupleDemo().getCarByType("SUV");
+        car.ifPresent(System.out::println);
+        car.ifPresentOrElse(System.out::println, ()-> System.out.println("No car"));
     }
 
+    public record Car(String type) {
+    }
 }
