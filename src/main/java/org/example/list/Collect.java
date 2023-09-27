@@ -1,10 +1,9 @@
 package org.example.list;
 
+import org.example.utils.BooleanUtils;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
-
-import static java.util.function.Predicate.not;
 
 public class Collect {
     public static void main(String[] args) {
@@ -20,6 +19,10 @@ public class Collect {
         if (not(phones.isEmpty()))
             System.out.println(phones.get(0));
 
+        //Custom class com.example.utils.BooleanUtils, statically imported
+        if (BooleanUtils.not(phones::isEmpty))
+            System.out.println(phones.get(0));
+
         for (var phone : phones) {
             System.out.println(phone);
         }
@@ -32,7 +35,7 @@ public class Collect {
         System.out.println(phones.indexOf(new Phone("Sony", 8)));
     }
 
-    public static void printPhoneMake(Phone phone){
+    public static void printPhoneMake(Phone phone) {
         System.out.println(phone.make());
     }
 
