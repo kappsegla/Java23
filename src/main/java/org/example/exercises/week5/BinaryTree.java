@@ -3,11 +3,23 @@ package org.example.exercises.week5;
 public class BinaryTree {
 
     Node root;
-    
-    public void add2(int value)
-    
+
+    private Node addRecursive(Node current, int value) {
+        if (current == null) {
+            return new Node(value);
+        }
+        if (current.value > value) {
+            current.left = addRecursive(current.left, value);
+        } else if (current.value < value) {
+            current.right = addRecursive(current.right, value);
+        }
+        return current;
+    }
+
     public void add(int value) {
-        Node node = new Node();
+        root = addRecursive(root, value);
+
+       /* Node node = new Node();
         node.value = value;
 
         if (root == null) {
@@ -25,24 +37,21 @@ public class BinaryTree {
                     if (currentNode.right == null) {
                         currentNode.right = node;
                         break;
-                    }  else currentNode = currentNode.right;
+                    } else currentNode = currentNode.right;
                 } else {
                     // currentNode.value == value
                     break;
+                }
             }
-        }
+        }*/
     }
-    
-
-
-}
 
     public void printNumbersSorted() {
         printNode(root);
     }
 
-    private void printNode(Node node){
-        if( node == null)
+    private void printNode(Node node) {
+        if (node == null)
             return;
         printNode(node.left);
         System.out.println(node.value);
@@ -69,4 +78,10 @@ class Node {
     int value;
     Node left;
     Node right;
+
+    Node(int value) {
+        this.value = value;
+        this.right = null;
+        this.left = null;
+    }
 }
