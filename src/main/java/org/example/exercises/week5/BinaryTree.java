@@ -3,7 +3,9 @@ package org.example.exercises.week5;
 public class BinaryTree {
 
     Node root;
-
+    
+    public void add2(int value)
+    
     public void add(int value) {
         Node node = new Node();
         node.value = value;
@@ -30,13 +32,21 @@ public class BinaryTree {
             }
         }
     }
-    //
+    
 
 
 }
 
     public void printNumbersSorted() {
-        //sout
+        printNode(root);
+    }
+
+    private void printNode(Node node){
+        if( node == null)
+            return;
+        printNode(node.left);
+        System.out.println(node.value);
+        printNode(node.right);
     }
 
     public static void main(String[] args) {
@@ -49,6 +59,8 @@ public class BinaryTree {
         btree.add(8);
         btree.add(7);
         btree.add(9);
+
+        btree.printNumbersSorted();
     }
 
 }
