@@ -12,11 +12,13 @@ public class App {
         EmployeeFactory employeeFactory = new EmployeeFactory();
         employeeList = employeeFactory.getAllEmployee();
 
+        //Example query
         employeeList.stream()
                 .skip(5)
                 .forEach(System.out::println);
 
-        // TODO
+        // TODO: try implementing more queries against the List<Employee>
+
 
 //        List all distinct project in non-ascending order.
 //        Print full name of any employee whose firstName starts with ‘A’.
