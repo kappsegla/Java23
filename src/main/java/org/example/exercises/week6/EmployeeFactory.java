@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-    public class EmployeeFactory extends Employee {
+    public class EmployeeFactory{
 
         ArrayList<Employee> employees = new ArrayList<>();
 
