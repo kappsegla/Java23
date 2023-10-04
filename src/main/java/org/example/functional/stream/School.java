@@ -3,7 +3,11 @@ package org.example.functional.stream;
 import org.example.oop.Students;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class School {
     public static void main(String[] args) {
@@ -28,7 +32,60 @@ public class School {
                 .sum();
         System.out.println(totalCredits);
 
+        //Get a unmodifiable list of student mail addresses
+        List<String> emails = students.stream()
+                .map(Student::email)
+                .toList();
+        emails.forEach(System.out::println);
 
+        //Get a not guarantied modifiable list of student emails
+        List<String> modifiableEmailsList = students.stream()
+                .map(Student::email)
+                .collect(Collectors.toList());
 
+        List<String> fullNames = students.stream()
+                .map(student -> student.firstName() + " " + student.lastName())
+                .sorted()
+                .toList();
+
+        fullNames.forEach(System.out::println);
+
+        students.stream()
+                .map(StudentNameAndEmail::of)
+                .forEach(System.out::println);
+
+        //Which students are enrolled on more than one course
+        students.stream()
+                .filter(student -> student.courceList().size() > 1)
+                .forEach(System.out::println);
+
+        //Which unique course names are the students taking
+        students.stream()
+                .map(Student::courceList)
+                .flatMap(courseList -> courseList.stream())
+                .distinct()
+                .forEach(System.out::println);
+
+        students.stream()
+                .map(Student::courceList)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toSet())
+                .forEach(System.out::println);
+
+        //Number of students taking a course with name Database
+        var databaseStudents = students.stream()
+                .filter(student -> student.courceList().stream().anyMatch((cource -> cource.name().equals("Database"))))
+                .count();
+        System.out.println(databaseStudents);
+
+    }
+}
+
+record StudentNameAndEmail(String fullName, String email) {
+
+    public static StudentNameAndEmail of(Student student) {
+        return new StudentNameAndEmail(
+                student.firstName() + " " + student.lastName(),
+                student.email());
     }
 }
