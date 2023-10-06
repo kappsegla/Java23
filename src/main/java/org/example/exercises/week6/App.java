@@ -23,7 +23,18 @@ public class App {
         //checkForSalaryLessThan();
         //totalSalaries();
         //printEmployeesSortedBySalaryAscendingOrder();
-        projectNames();
+        //projectNames();
+        limitAndSkip();
+
+
+    }
+
+    private static void limitAndSkip() {
+        List<Employee> limitEmploy = employeeList.stream().limit(5).toList();
+        limitEmploy.forEach(System.out::println);
+
+        List<Employee> fiveEmploy = employeeList.stream().skip(5).toList();
+        fiveEmploy.forEach(System.out::println);
     }
 
     private static void projectNames() {
