@@ -2,7 +2,6 @@ package org.example.exercises.week6;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class App {
     static List<Employee> employeeList = new ArrayList<>();
@@ -27,7 +26,20 @@ public class App {
         //limitAndSkip();
         //minMaxWithTeeing();
 
+        employeesByProject();
+
+
     }
+
+    private static void employeesByProject() {
+        var map = employeeList.stream()
+                .flatMap(employee -> employee.projects().stream()
+                        .map(project -> new EmployeeAndProjectName(employee, project.name())) )
+                .collect(Collectors.groupingBy(EmployeeAndProjectName::projectName));
+        map.entrySet().forEach(System.out::println);
+    }
+
+    record EmployeeAndProjectName(Employee employee, String projectName){}
 
     private static void minMaxWithTeeing() {
         employeeList.stream().collect(Collectors.teeing(
