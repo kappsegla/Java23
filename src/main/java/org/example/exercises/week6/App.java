@@ -21,8 +21,16 @@ public class App {
         //groupByProjectCount();
         //allSalariesGreaterThan(1000000);
         //checkForSalaryLessThan();
+        totalSalaries();
 
 
+    }
+
+    private static void totalSalaries() {
+        System.out.println("Total salary of all employees: "
+                           + employeeList.stream()
+                                   .mapToDouble(Employee::salary)
+                                   .sum());
     }
 
     private static void checkForSalaryLessThan() {
