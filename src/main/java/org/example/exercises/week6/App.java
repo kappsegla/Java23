@@ -1,8 +1,7 @@
 package org.example.exercises.week6;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Spliterator;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class App {
@@ -15,10 +14,19 @@ public class App {
 
         //salaryGreatherThan(2000000);
         //numberOfEmployees();
+        //employeeWithHighestSalary();
+    }
 
+    private static void employeeWithHighestSalary() {
+        System.out.println(employeeList.stream().max(Comparator.comparingInt(Employee::salary)));
 
-
-
+        Optional<Employee> maxSalaryEmployee = employeeList.stream().max(Comparator.comparing(Employee::salary));
+        if( maxSalaryEmployee.isPresent()) {
+            Employee highestSalaryEmployee = maxSalaryEmployee.get();
+            System.out.println("Employee with the highest salary:");
+            System.out.println("Name: " + highestSalaryEmployee.firstName() + "   " + highestSalaryEmployee.lastName());
+            System.out.println("Salary: " + highestSalaryEmployee.salary());
+        }
     }
 
     private static void numberOfEmployees() {
