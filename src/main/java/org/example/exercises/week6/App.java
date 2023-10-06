@@ -21,9 +21,16 @@ public class App {
         //groupByProjectCount();
         //allSalariesGreaterThan(1000000);
         //checkForSalaryLessThan();
-        totalSalaries();
+        //totalSalaries();
+        printEmployeesSortedBySalaryAscendingOrder();
 
 
+    }
+
+    private static void printEmployeesSortedBySalaryAscendingOrder() {
+        List<Employee> sortedEmploy = employeeList.stream()
+                .sorted(Comparator.comparing(Employee::salary)).toList();
+        sortedEmploy.stream().map(x -> x.firstName() + " " + x.lastName() + " with " + x.salary() + " kr").forEach(System.out::println);
     }
 
     private static void totalSalaries() {
