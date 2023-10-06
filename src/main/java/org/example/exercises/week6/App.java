@@ -22,9 +22,19 @@ public class App {
         //allSalariesGreaterThan(1000000);
         //checkForSalaryLessThan();
         //totalSalaries();
-        printEmployeesSortedBySalaryAscendingOrder();
+        //printEmployeesSortedBySalaryAscendingOrder();
+        projectNames();
+    }
 
+    private static void projectNames() {
+        var projectsList = employeeList.stream()
+                .filter(Objects::nonNull)
+                .flatMap(x -> x.projects().stream())
+                .map(Project::name)
+                .distinct()
+                .toList();
 
+        projectsList.forEach(System.out::println);
     }
 
     private static void printEmployeesSortedBySalaryAscendingOrder() {
