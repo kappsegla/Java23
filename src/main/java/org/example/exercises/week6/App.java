@@ -18,7 +18,13 @@ public class App {
         //employeeWithLowestSalary();
         //employeesWorkingOnMoreThanOneProject();
         //findAllProjectNames();
+        groupByProjectCount();
 
+    }
+
+    private static void groupByProjectCount() {
+        Map<Integer, List<Employee>> map =employeeList.stream().collect(Collectors.groupingBy((n) -> n.projects().size()));
+        map.forEach((key, employees) -> System.out.println(key + " : " + employees.stream().map(Employee::firstName).toList()));
     }
 
     private static void findAllProjectNames() {
