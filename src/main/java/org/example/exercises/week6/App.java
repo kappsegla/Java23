@@ -18,12 +18,19 @@ public class App {
         //employeeWithLowestSalary();
         //employeesWorkingOnMoreThanOneProject();
         //findAllProjectNames();
-        groupByProjectCount();
+        //groupByProjectCount();
+        //allSalariesGreaterThan(1000000);
+
+
 
     }
 
+    private static void allSalariesGreaterThan(int salary) {
+        System.out.println(employeeList.stream().allMatch(x -> x.salary() > salary));
+    }
+
     private static void groupByProjectCount() {
-        Map<Integer, List<Employee>> map =employeeList.stream().collect(Collectors.groupingBy((n) -> n.projects().size()));
+        Map<Integer, List<Employee>> map = employeeList.stream().collect(Collectors.groupingBy((n) -> n.projects().size()));
         map.forEach((key, employees) -> System.out.println(key + " : " + employees.stream().map(Employee::firstName).toList()));
     }
 
