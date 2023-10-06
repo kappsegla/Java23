@@ -15,13 +15,22 @@ public class App {
         //salaryGreatherThan(2000000);
         //numberOfEmployees();
         //employeeWithHighestSalary();
+        employeeWithLowestSalary();
+    }
+
+    private static void employeeWithLowestSalary() {
+        Optional<Employee> minSalaryEmployee = employeeList.stream().min(Comparator.comparingInt(Employee::salary));
+        minSalaryEmployee.stream().map(x -> x.firstName() + " " + x.lastName() + "with the minimum salary: "
+                                            + x.salary()).forEach(System.out::println);
+
+        minSalaryEmployee.ifPresent(s -> System.out.println(s.firstName() + " " + s.lastName() + " Salary: " + s.salary()));
     }
 
     private static void employeeWithHighestSalary() {
         System.out.println(employeeList.stream().max(Comparator.comparingInt(Employee::salary)));
 
         Optional<Employee> maxSalaryEmployee = employeeList.stream().max(Comparator.comparing(Employee::salary));
-        if( maxSalaryEmployee.isPresent()) {
+        if (maxSalaryEmployee.isPresent()) {
             Employee highestSalaryEmployee = maxSalaryEmployee.get();
             System.out.println("Employee with the highest salary:");
             System.out.println("Name: " + highestSalaryEmployee.firstName() + "   " + highestSalaryEmployee.lastName());
