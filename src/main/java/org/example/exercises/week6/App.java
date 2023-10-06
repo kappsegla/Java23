@@ -16,16 +16,36 @@ public class App {
         //numberOfEmployees();
         //employeeWithHighestSalary();
         //employeeWithLowestSalary();
-        employeesWorkingOnMoreThanOneProject();
+        //employeesWorkingOnMoreThanOneProject();
+        //findAllProjectNames();
 
+    }
 
+    private static void findAllProjectNames() {
+        List<String> allProjectNames = employeeList.stream()
+                .flatMap(employees -> employees.projects().stream())
+                .map(Project::name)
+                .distinct()
+                .toList();
+        System.out.println("Names of all projects: ");
+        allProjectNames.forEach(System.out::println);
+
+        employeeList.stream()
+                .flatMap((e) -> e.projects().stream())
+                .map((Project::name))
+                .collect(Collectors.toSet())
+                .forEach(System.out::println);
+
+        Set<String> projectsName = employeeList.stream().flatMap(x -> x.projects().stream())
+                .map(x -> "* " + x.name() + " *\t").collect(Collectors.toSet());
+        System.out.println(projectsName);
     }
 
     private static void employeesWorkingOnMoreThanOneProject() {
         var moreThanTwoProject = employeeList.stream()
                 .filter(x -> x.projects().size() > 1)
                 .map(x -> x.lastName() + " " + x.firstName() + "who with " + x.projects().size() + " projects")
-                        .collect(Collectors.toList());
+                .collect(Collectors.toList());
         moreThanTwoProject.forEach(System.out::println);
     }
 
