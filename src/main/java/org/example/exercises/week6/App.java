@@ -29,14 +29,22 @@ public class App {
         //minMaxWithTeeing();
         //employeesByProject();
         //totalSalaryForEachProject();
+        //highestSalaryForEachProject();
+        employeeList.stream()
+                .map(Employee::projects)
+                .flatMap(List::stream)
+                .collect(Collectors.groupingBy(Project::team, Collectors.mapping(Project::name, Collectors.toSet())))
+                .forEach((key, value) -> System.out.println(key + " : " + value));
 
+
+    }
+
+    private static void highestSalaryForEachProject() {
         var map = employeeList.stream()
                 .flatMap(employeeToEmployeeAndProjectName())
                 .collect(Collectors.groupingBy(EmployeeAndProjectName::projectName,
                         Collectors.maxBy(Comparator.comparingInt(n -> n.employee().salary()))));
         map.entrySet().forEach(System.out::println);
-
-
     }
 
     private static void totalSalaryForEachProject() {
