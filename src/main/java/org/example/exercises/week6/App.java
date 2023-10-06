@@ -30,13 +30,15 @@ public class App {
         //employeesByProject();
         //totalSalaryForEachProject();
         //highestSalaryForEachProject();
+        groupProjectsUnderTeams();
+    }
+
+    private static void groupProjectsUnderTeams() {
         employeeList.stream()
                 .map(Employee::projects)
                 .flatMap(List::stream)
                 .collect(Collectors.groupingBy(Project::team, Collectors.mapping(Project::name, Collectors.toSet())))
                 .forEach((key, value) -> System.out.println(key + " : " + value));
-
-
     }
 
     private static void highestSalaryForEachProject() {
