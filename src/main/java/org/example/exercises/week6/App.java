@@ -28,9 +28,13 @@ public class App {
         //limitAndSkip();
         //minMaxWithTeeing();
         //employeesByProject();
-        totalSalaryForEachProject();
+        //totalSalaryForEachProject();
 
-
+        var map = employeeList.stream()
+                .flatMap(employeeToEmployeeAndProjectName())
+                .collect(Collectors.groupingBy(EmployeeAndProjectName::projectName,
+                        Collectors.maxBy(Comparator.comparingInt(n -> n.employee().salary()))));
+        map.entrySet().forEach(System.out::println);
 
 
     }
