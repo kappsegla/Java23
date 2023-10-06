@@ -15,7 +15,18 @@ public class App {
         //salaryGreatherThan(2000000);
         //numberOfEmployees();
         //employeeWithHighestSalary();
-        employeeWithLowestSalary();
+        //employeeWithLowestSalary();
+        employeesWorkingOnMoreThanOneProject();
+
+
+    }
+
+    private static void employeesWorkingOnMoreThanOneProject() {
+        var moreThanTwoProject = employeeList.stream()
+                .filter(x -> x.projects().size() > 1)
+                .map(x -> x.lastName() + " " + x.firstName() + "who with " + x.projects().size() + " projects")
+                        .collect(Collectors.toList());
+        moreThanTwoProject.forEach(System.out::println);
     }
 
     private static void employeeWithLowestSalary() {
