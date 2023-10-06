@@ -20,9 +20,13 @@ public class App {
         //findAllProjectNames();
         //groupByProjectCount();
         //allSalariesGreaterThan(1000000);
+        //checkForSalaryLessThan();
 
 
+    }
 
+    private static void checkForSalaryLessThan() {
+        System.out.println(employeeList.stream().anyMatch(x -> x.salary() < 1_000_000));
     }
 
     private static void allSalariesGreaterThan(int salary) {
