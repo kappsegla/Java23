@@ -1,7 +1,9 @@
 package org.example.exercises.week6;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class App {
     static List<Employee> employeeList = new ArrayList<>();
@@ -33,10 +35,13 @@ public class App {
 
     private static void employeesByProject() {
         var map = employeeList.stream()
-                .flatMap(employee -> employee.projects().stream()
-                        .map(project -> new EmployeeAndProjectName(employee, project.name())) )
+                .flatMap(employeeToEmployeeAndProjectName())
                 .collect(Collectors.groupingBy(EmployeeAndProjectName::projectName));
         map.entrySet().forEach(System.out::println);
+    }
+
+    private static Function<Employee, Stream<? extends EmployeeAndProjectName>> employeeToEmployeeAndProjectName() {
+        return employee -> employee.projects().stream().map(project -> new EmployeeAndProjectName(employee, project.name()));
     }
 
     record EmployeeAndProjectName(Employee employee, String projectName){}
