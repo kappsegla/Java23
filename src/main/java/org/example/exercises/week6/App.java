@@ -24,9 +24,17 @@ public class App {
         //totalSalaries();
         //printEmployeesSortedBySalaryAscendingOrder();
         //projectNames();
-        limitAndSkip();
+        //limitAndSkip();
+        //minMaxWithTeeing();
 
+    }
 
+    private static void minMaxWithTeeing() {
+        employeeList.stream().collect(Collectors.teeing(
+                        Collectors.maxBy(Comparator.comparing(Employee::salary)),
+                        Collectors.minBy(Comparator.comparing(Employee::salary)),
+                        List::of))
+                .forEach(System.out::println);
     }
 
     private static void limitAndSkip() {
