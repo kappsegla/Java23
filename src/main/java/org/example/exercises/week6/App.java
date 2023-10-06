@@ -27,10 +27,19 @@ public class App {
         //projectNames();
         //limitAndSkip();
         //minMaxWithTeeing();
+        //employeesByProject();
+        totalSalaryForEachProject();
 
-        employeesByProject();
 
 
+
+    }
+
+    private static void totalSalaryForEachProject() {
+        var map = employeeList.stream()
+                .flatMap(employeeToEmployeeAndProjectName())
+                .collect(Collectors.groupingBy(EmployeeAndProjectName::projectName, Collectors.summingInt(n -> n.employee.salary())));
+        map.entrySet().forEach(System.out::println);
     }
 
     private static void employeesByProject() {
@@ -44,7 +53,8 @@ public class App {
         return employee -> employee.projects().stream().map(project -> new EmployeeAndProjectName(employee, project.name()));
     }
 
-    record EmployeeAndProjectName(Employee employee, String projectName){}
+    record EmployeeAndProjectName(Employee employee, String projectName) {
+    }
 
     private static void minMaxWithTeeing() {
         employeeList.stream().collect(Collectors.teeing(
