@@ -11,6 +11,16 @@ public class CSVDemo {
     public static void main(String[] args) {
         var home = System.getProperty("user.home");
         Path path = Path.of(home, "cakes.csv");
+        if( !Files.exists(path)) {
+            System.out.println("cakes.csv not found");
+            return;
+        }
+        try {
+            System.out.println(Files.size(path));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         List<Cake> cakes = List.of();
         try (Stream<String> lines = Files.lines(path)) {
 
