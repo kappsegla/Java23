@@ -21,8 +21,6 @@ public class JsonFile {
             <artifactId>jackson-databind</artifactId>
             <version>2.15.1</version>
         </dependency>
-
-
      */
 
     public static void main(String[] args) throws IOException {
