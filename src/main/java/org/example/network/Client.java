@@ -1,9 +1,6 @@
 package org.example.network;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.net.SocketAddress;
 
@@ -15,13 +12,13 @@ public class Client {
         //Serverns port nummer 16-bit: 6000
 
         try (Socket socket = new Socket("192.168.1.179",6000)) {
-            ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
-            outputStream.writeUTF("Hello there from client!");
-            outputStream.flush();
-            ObjectInputStream inputStream =  new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
-            String text = inputStream.readUTF();
-            System.out.println(text);
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+            bufferedWriter.write("Hello from client!\n");
+            bufferedWriter.flush();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
+            String text = bufferedReader.readLine();
+            System.out.println(text);
         }catch (IOException e){
 
         }

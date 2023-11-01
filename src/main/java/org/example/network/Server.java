@@ -20,16 +20,14 @@ public class Server {
 
     private static void handleConnection(Socket clientSocket) {
         try {
-            ObjectInputStream inputStream = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-            String text = null;
-            text = inputStream.readUTF();
-
+            String text = bufferedReader.readLine();
             System.out.println(text);
 
-            ObjectOutputStream outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
-            outputStream.writeUTF("Hello there");
-            outputStream.flush();
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            bufferedWriter.write("Hello from server!\n");
+            bufferedWriter.flush();
         } catch (IOException e) {
 
         }
