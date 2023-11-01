@@ -14,7 +14,7 @@ public class HttpConsume {
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://ntfy.sh/java23iths/raw"))
+                .uri(URI.create("https://ntfy.sh/YOUR_TOPIC/raw"))
                 .build();
 
         client.sendAsync(request, HttpResponse.BodyHandlers.ofInputStream())

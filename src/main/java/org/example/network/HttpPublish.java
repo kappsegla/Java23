@@ -14,7 +14,7 @@ public class HttpPublish {
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://ntfy.sh/java23iths")) //Change java23iths to another topic name
+                .uri(URI.create("https://ntfy.sh/YOUR_TOPIC")) //Change java23iths to another topic name
                 .POST(HttpRequest.BodyPublishers.ofString("Hello World!")) //Replace with your text
                 .build();
 
