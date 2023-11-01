@@ -23,7 +23,8 @@ public class HttpConsume {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                     reader.lines().forEach(line -> {
                         // process each line here
-                        //Replace with updating model with incoming text message. Do this in Platform.runLater()
+                        //Replace with updating model with incoming text message.
+                        //In a javafx application this code has to be run on Platform.runLater()
                         System.out.println(Thread.currentThread().getName());
                         System.out.println(line);
                     });
