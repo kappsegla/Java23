@@ -2,6 +2,7 @@ package org.example.pizza;
 
 import org.example.pizza.decorator.BaconDecorator;
 import org.example.pizza.decorator.JalapenoDecorator;
+import org.example.pizza.decorator.RemoveTopping;
 import org.example.pizza.decorator.Topping;
 
 import java.util.ArrayList;
@@ -16,7 +17,9 @@ public class PizzaOrders {
         pizzaList.add(new Hawaii());
         pizzaList.add(new BaconDecorator(new Margeritha()));
         pizzaList.add(new JalapenoDecorator(new JalapenoDecorator(new Margeritha())));
-        pizzaList.add(new Topping(20,"🧅",new Topping(10,"🍄", new Margeritha())));
+        pizzaList.add(new RemoveTopping(10,"oregano", new Topping(20,"🧅",new Topping(10,"🍄", new Margeritha()))));
+
+
 
         Pizza pizza;
         //What pizza do you want?

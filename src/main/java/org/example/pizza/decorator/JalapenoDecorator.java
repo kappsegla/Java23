@@ -2,6 +2,8 @@ package org.example.pizza.decorator;
 
 import org.example.pizza.Pizza;
 
+import java.util.List;
+
 public class JalapenoDecorator extends ToppingDecorator {
 
     public JalapenoDecorator(Pizza pizza) {
@@ -14,7 +16,9 @@ public class JalapenoDecorator extends ToppingDecorator {
     }
 
     @Override
-    public String getDescription() {
-        return pizza.getDescription() + ", jalapeno";
+    public List<String> getDescription() {
+        var description = pizza.getDescription();
+        description.add("jalapeno");
+        return description;
     }
 }

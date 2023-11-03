@@ -1,5 +1,8 @@
 package org.example.pizza;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Margeritha extends Pizza {
     @Override
     public int getCost() {
@@ -7,7 +10,7 @@ public class Margeritha extends Pizza {
     }
 
     @Override
-    public String getDescription() {
-        return "Ost, tomatsås, oregano";
+    public List<String> getDescription() {
+        return new ArrayList<>(List.of("ost", "tomatsås", "oregano"));
     }
 }

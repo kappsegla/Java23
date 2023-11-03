@@ -2,7 +2,9 @@ package org.example.pizza.decorator;
 
 import org.example.pizza.Pizza;
 
-public class BaconDecorator extends ToppingDecorator{
+import java.util.List;
+
+public class BaconDecorator extends ToppingDecorator {
 
     public BaconDecorator(Pizza pizza) {
         super(pizza);
@@ -14,7 +16,9 @@ public class BaconDecorator extends ToppingDecorator{
     }
 
     @Override
-    public String getDescription() {
-        return pizza.getDescription() + ", 🥓";
+    public List<String> getDescription() {
+        var description = pizza.getDescription();
+        description.add("🥓");
+        return description;
     }
 }
