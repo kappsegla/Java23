@@ -15,7 +15,7 @@
         <junit.jupiter.version>5.10.1</junit.jupiter.version>
         <assertj.core.version>3.24.2</assertj.core.version>
         <mockito.version>5.7.0</mockito.version>
-        <jackson.version>2.15.3</jackson.version>
+        <jackson.version>2.16.0</jackson.version>
     </properties>
     <dependencies>
         <dependency>
